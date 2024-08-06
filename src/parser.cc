@@ -86,7 +86,7 @@ struct time_range : seq<time, one<'-'>, time> {};
 
 using time_list = list<time_range, string<',', ' '>>;
 using wday_list = list<wday_range, string<',', ' '>>;
-using rrule = seq<wday_list, one<' '>, time_list>;
+using rrule = seq<opt<seq<wday_list, one<' '>>>, opt<time_list>>;
 using rule_list = list<rrule, string<';', ' '>>;
 
 struct ruleset {
@@ -153,7 +153,7 @@ struct action<rrule> {
 
 ruleset_t parse(std::string_view s) {
   using grammar = must<rule_list>;
-  auto input = memory_input{s, "oh"};
+  auto input = memory_input{s, s};
   auto r = ruleset{};
   parse<grammar, action>(input, r);
   return r.rules_;

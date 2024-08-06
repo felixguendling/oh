@@ -10,6 +10,7 @@ bool contains(rule const& r, local_minutes const& t) {
   auto const iso =
       date::weekday{std::chrono::time_point_cast<date::days>(t)}.iso_encoding();
   auto const contains_weekday =
+      r.weekday_ranges_.empty() ||
       utl::any_of(r.weekday_ranges_, [&](range<date::weekday> const& wdr) {
         return wdr.from_.iso_encoding() <= iso && iso <= wdr.to_.iso_encoding();
       });
@@ -19,6 +20,7 @@ bool contains(rule const& r, local_minutes const& t) {
   auto const hm =
       hh_mm{t.time_since_epoch() % std::chrono::minutes{1440}}.to_duration();
   auto const contains_time =
+      r.time_ranges_.empty() ||
       utl::any_of(r.time_ranges_, [&](range<hh_mm> const& tr) {
         return tr.from_.to_duration() <= hm && hm <= tr.to_.to_duration();
       });
