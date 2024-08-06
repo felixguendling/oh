@@ -1,7 +1,7 @@
-[boost]
+[PEGTL]
   url=git@github.com:taocpp/PEGTL.git
   branch=main
-  commit=68f446153c5c736035dbee1286e788f904006add
+  commit=2cd288da4db1a18c2a2d7f34e88335133fb02aec
 [googletest]
   url=git@github.com:motis-project/googletest.git
   branch=master
