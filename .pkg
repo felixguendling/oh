@@ -1,5 +1,5 @@
 [PEGTL]
-  url=git@github.com:taocpp/PEGTL.git
+  url=git@github.com:felixguendling/PEGTL.git
   branch=main
   commit=2cd288da4db1a18c2a2d7f34e88335133fb02aec
 [googletest]
