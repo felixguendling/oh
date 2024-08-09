@@ -117,8 +117,8 @@ template <>
 struct action<wday_range> {
   template <typename ActionInput>
   static void apply(const ActionInput& in, ruleset& x) {
-    x.rule_.weekday_ranges_.emplace_back(x.weekday_range_[0],
-                                         x.weekday_range_[1]);
+    x.rule_.weekday_ranges_.push_back(
+        range<date::weekday>{x.weekday_range_[0], x.weekday_range_[1]});
     x.weekday_idx_ = 0U;
   }
 };
@@ -136,7 +136,8 @@ template <>
 struct action<time_range> {
   template <typename ActionInput>
   static void apply(const ActionInput& in, ruleset& x) {
-    x.rule_.time_ranges_.emplace_back(x.time_range_[0], x.time_range_[1]);
+    x.rule_.time_ranges_.push_back(
+        range<hh_mm>{x.time_range_[0], x.time_range_[1]});
     x.time_idx_ = 0U;
   }
 };
