@@ -86,7 +86,8 @@ struct time_range : seq<time, one<'-'>, time> {};
 
 using time_list = list<time_range, string<',', ' '>>;
 using wday_list = list<wday_range, string<',', ' '>>;
-using rrule = seq<opt<seq<wday_list, one<' '>>>, opt<time_list>>;
+using full_rule = seq<seq<wday_list, one<' '>, time_list>>;
+using rrule = sor<full_rule, wday_list, time_list>;
 using rule_list = list<rrule, string<';', ' '>>;
 
 struct ruleset {

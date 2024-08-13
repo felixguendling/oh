@@ -7,7 +7,7 @@ using namespace oh;
 using namespace date;
 using namespace std::chrono_literals;
 
-TEST(a, b) {
+TEST(oh, typical) {
   auto r = parse(
       "Mo-Fr 07:50-12:00, 12:45-18:10; "
       "Sa 08:50-13:40, 14:25-19:10; "
@@ -28,4 +28,10 @@ TEST(a, b) {
       r, local_minutes{local_days{2024_y / August / 2} + 18h + 11min}));
   EXPECT_FALSE(
       contains(r, local_minutes{local_days{2024_y / August / 2} + 7h + 30min}));
+}
+
+TEST(oh, all) {
+  auto r = parse("Th; 08:00-24:00");
+  EXPECT_TRUE(
+      contains(r, local_minutes{local_days{2024_y / June / 20} + 0h + 10min}));
 }
