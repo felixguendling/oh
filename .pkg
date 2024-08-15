@@ -1,7 +1,7 @@
 [PEGTL]
   url=git@github.com:felixguendling/PEGTL.git
   branch=main
-  commit=0091112da4f0a0004186cab12eb3b2e866c71750
+  commit=802b3df2fa92aba2a7c56c56e0fd0b99c682e9d1
 [googletest]
   url=git@github.com:motis-project/googletest.git
   branch=master
