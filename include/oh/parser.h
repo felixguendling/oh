@@ -13,9 +13,15 @@ struct range {
 
 using hh_mm = date::hh_mm_ss<std::chrono::minutes>;
 
+struct monthday {
+  date::month month_;
+  std::optional<date::day> day_;
+};
+
 struct rule {
   friend std::ostream& operator<<(std::ostream&, rule const&);
 
+  std::vector<range<monthday>> monthday_ranges_;
   std::vector<range<date::weekday>> weekday_ranges_;
   std::vector<range<hh_mm>> time_ranges_;
 };
